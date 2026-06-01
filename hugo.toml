@@ -1,5 +1,6 @@
 baseURL = 'https://my-blog.pages.dev/'
 locale = 'zh-cn'
+languageCode = 'zh-cn'
 defaultContentLanguage = 'zh'
 title = '我的博客'
 theme = 'blog-minimal'
