@@ -8,6 +8,11 @@ theme = 'blog-minimal'
 [params]
 description = '一个使用 GitHub、Hugo 和 Cloudflare Pages 发布的静态博客。'
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 [menus]
   [[menus.main]]
     name = '首页'

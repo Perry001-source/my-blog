@@ -1,6 +1,11 @@
 {{ define "main" }}
-  {{ $pages := where site.RegularPages "Section" "posts" }}
-  {{ with index $pages 0 }}
+  {{ $pages := site.RegularPages.ByDate.Reverse }}
+  {{ $featuredPages := where $pages "Params.homefeatured" true }}
+  {{ $featured := index $pages 0 }}
+  {{ with index $featuredPages 0 }}
+    {{ $featured = . }}
+  {{ end }}
+  {{ with $featured }}
     <article class="featured-card">
       <a class="cover cover--featured" href="{{ .RelPermalink }}" style="--cover-start: {{ default "#111827" .Params.coverStart }}; --cover-end: {{ default "#334155" .Params.coverEnd }};">
         <span class="cover__eyebrow">{{ default "Featured" .Params.coverEyebrow }}</span>
@@ -15,7 +20,7 @@
   {{ end }}
 
   <div class="post-grid">
-    {{ range after 1 $pages }}
+    {{ range where $pages "RelPermalink" "ne" $featured.RelPermalink }}
       <article class="post-card">
         <a class="cover" href="{{ .RelPermalink }}" style="--cover-start: {{ default "#172554" .Params.coverStart }}; --cover-end: {{ default "#0f766e" .Params.coverEnd }};">
           <span class="cover__eyebrow">{{ default "Article" .Params.coverEyebrow }}</span>

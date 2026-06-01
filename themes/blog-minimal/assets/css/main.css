@@ -179,6 +179,35 @@ code {
   padding: 0.12em 0.3em;
 }
 
+table {
+  border-collapse: collapse;
+  display: block;
+  margin: 22px 0;
+  overflow-x: auto;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: #eef6f5;
+  color: #115e59;
+  font-weight: 800;
+}
+
+blockquote {
+  border-left: 4px solid #d6b46d;
+  color: var(--muted);
+  margin: 18px 0;
+  padding: 2px 0 2px 16px;
+}
+
 .featured-card,
 .post-card {
   background: var(--surface);
@@ -218,6 +247,137 @@ code {
   color: var(--muted);
   font-size: 1.05rem;
   margin: 0;
+}
+
+.article-content {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding-top: 28px;
+}
+
+.article-content > h1 {
+  margin-bottom: 24px;
+}
+
+.course-note {
+  background: #ffffff;
+  border: 1px solid #e8edf5;
+  box-shadow: 0 10px 30px rgb(31 41 51 / 0.08);
+  overflow-x: auto;
+  padding: 30px 34px 40px;
+}
+
+.course-note .subtitle {
+  color: var(--muted);
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.course-note .hero-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 18px 0 24px;
+}
+
+.course-note .hero-card {
+  background: #fbfdff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.course-note .hero-card strong {
+  color: #2563eb;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.course-note .toc {
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  display: grid;
+  gap: 8px 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 18px 0 28px;
+  padding: 16px;
+}
+
+.course-note h2 {
+  background: #eef5ff;
+  border-left: 5px solid #2563eb;
+  border-radius: 6px;
+  font-size: 1.35rem;
+  margin-top: 34px;
+  padding: 10px 12px;
+}
+
+.course-note h3 {
+  color: #1f3f7a;
+  font-size: 1.1rem;
+  margin-top: 24px;
+}
+
+.course-note table {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  display: table;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  table-layout: auto;
+  width: 100%;
+}
+
+.course-note th {
+  background: #eef5ff;
+  color: #173b7a;
+}
+
+.course-note td {
+  background: #ffffff;
+}
+
+.course-note tr:nth-child(even) td {
+  background: #fbfdff;
+}
+
+.course-note .formula {
+  color: #0f7a55;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.course-note .tag,
+.course-note .tip,
+.course-note .mini,
+.course-note .danger {
+  border-radius: 6px;
+  display: inline-block;
+  padding: 2px 7px;
+}
+
+.course-note .tag {
+  background: #fff7e6;
+  color: #b7791f;
+  font-weight: 700;
+}
+
+.course-note .tip,
+.course-note .mini {
+  background: #ebf8f2;
+  border-left: 4px solid #0f7a55;
+  display: block;
+  margin: 16px 0;
+  padding: 10px 12px;
+}
+
+.course-note .danger {
+  background: #fff1f0;
+  border-left: 4px solid #b42318;
+  color: #7a1b14;
+  display: block;
+  margin: 16px 0;
+  padding: 10px 12px;
 }
 
 .post-card {
@@ -349,6 +509,15 @@ code {
   }
 
   .course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .course-note {
+    padding: 20px 16px 28px;
+  }
+
+  .course-note .hero-grid,
+  .course-note .toc {
     grid-template-columns: 1fr;
   }
 
