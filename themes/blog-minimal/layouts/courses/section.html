@@ -1,0 +1,25 @@
+{{ define "main" }}
+  <section class="section-intro">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+    {{ .Content }}
+  </section>
+
+  {{ with .Pages }}
+    <div class="course-grid">
+      {{ range . }}
+        <article class="post-card">
+          <a class="cover" href="{{ .RelPermalink }}" style="--cover-start: {{ default "#172554" .Params.coverStart }}; --cover-end: {{ default "#0f766e" .Params.coverEnd }};">
+            <span class="cover__eyebrow">{{ default "Course" .Params.coverEyebrow }}</span>
+            <span class="cover__title">{{ .LinkTitle }}</span>
+            <span class="cover__subtitle">{{ default .Description .Params.coverSubtitle }}</span>
+          </a>
+          <div class="post-card__body">
+            <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+            {{ with .Description }}<p>{{ . }}</p>{{ end }}
+          </div>
+        </article>
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}

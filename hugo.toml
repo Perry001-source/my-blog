@@ -21,8 +21,21 @@ description = '一个使用 GitHub、Hugo 和 Cloudflare Pages 发布的静态�
 
   [[menus.main]]
     name = '课程'
-    url = '#'
+    identifier = 'courses'
+    pageRef = '/courses'
     weight = 30
+
+  [[menus.main]]
+    name = '日语'
+    parent = 'courses'
+    pageRef = '/courses/japanese'
+    weight = 31
+
+  [[menus.main]]
+    name = '英语'
+    parent = 'courses'
+    pageRef = '/courses/english'
+    weight = 32
 
   [[menus.main]]
     name = '工具箱'

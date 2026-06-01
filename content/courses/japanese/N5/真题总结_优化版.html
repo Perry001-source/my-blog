@@ -1,0 +1,1512 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>N5 真题总结优化版</title>
+  <style>
+    :root {
+      --ink: #1f2933;
+      --muted: #5f6c7b;
+      --line: #d7deea;
+      --blue: #2563eb;
+      --blue-soft: #eef5ff;
+      --green: #0f7a55;
+      --green-soft: #ebf8f2;
+      --amber: #b7791f;
+      --amber-soft: #fff7e6;
+      --red: #b42318;
+      --red-soft: #fff1f0;
+      --paper: #ffffff;
+      --bg: #f7f9fc;
+    }
+    body {
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.58;
+      color: var(--ink);
+      background: var(--bg);
+      max-width: 1060px;
+      margin: 32px auto;
+      padding: 0 24px;
+    }
+    .page {
+      background: var(--paper);
+      border: 1px solid #e8edf5;
+      box-shadow: 0 10px 30px rgba(31, 41, 51, 0.08);
+      padding: 34px 38px 44px;
+    }
+    h1, h2, h3 { line-height: 1.25; }
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 8px;
+      letter-spacing: 0;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+    h2 {
+      margin-top: 34px;
+      padding: 10px 12px;
+      background: var(--blue-soft);
+      border-left: 5px solid var(--blue);
+      border-radius: 6px;
+      font-size: 21px;
+    }
+    h3 {
+      margin-top: 22px;
+      font-size: 17px;
+      color: #1f3f7a;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 18px 0 24px;
+    }
+    .hero-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: #fbfdff;
+    }
+    .hero-card strong {
+      display: block;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+      padding: 12px 16px;
+      margin: 18px 0 26px;
+    }
+    .toc a {
+      color: #174ea6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 20px;
+      table-layout: fixed;
+      background: var(--paper);
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      vertical-align: top;
+      word-break: break-word;
+    }
+    th {
+      background: #f2f6fb;
+      font-weight: 700;
+      color: #243b53;
+    }
+    tr:nth-child(even) td { background: #fcfdff; }
+    .tag {
+      font-weight: 700;
+      color: var(--red);
+    }
+    .tip {
+      background: var(--amber-soft);
+      border-left: 5px solid #f1a600;
+      padding: 10px 12px;
+      margin: 12px 0 18px;
+      border-radius: 6px;
+    }
+    .danger {
+      background: var(--red-soft);
+      border-left: 5px solid var(--red);
+      padding: 10px 12px;
+      margin: 12px 0 18px;
+      border-radius: 6px;
+    }
+    .mini {
+      background: var(--green-soft);
+      border-left: 5px solid var(--green);
+      padding: 10px 12px;
+      margin: 12px 0 18px;
+      border-radius: 6px;
+    }
+    .formula {
+      font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      font-weight: 700;
+      color: #143f8f;
+    }
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: #174ea6;
+      font-size: 13px;
+      font-weight: 700;
+      margin-right: 4px;
+    }
+    ul { margin-top: 6px; }
+    li { margin: 4px 0; }
+    @media print {
+      body {
+        background: #fff;
+        margin: 0;
+        padding: 0;
+      }
+      .page {
+        border: 0;
+        box-shadow: none;
+        padding: 14mm;
+      }
+      h2 { break-after: avoid; }
+      table, .tip, .danger, .mini { break-inside: avoid; }
+      .toc a { color: #174ea6; }
+    }
+    @media (max-width: 760px) {
+      body { padding: 0 10px; }
+      .page { padding: 24px 14px; }
+      .hero-grid, .toc { grid-template-columns: 1fr; }
+      table { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <h1>N5 真题总结优化版</h1>
+  <div class="subtitle">表格化・模块化・适合背诵与临考快速翻阅</div>
+
+  <div class="hero-grid">
+    <div class="hero-card"><strong>语法核心</strong>助词、动词接续、形容词变形。</div>
+    <div class="hero-card"><strong>真题思路</strong>看词性、看答句、看句尾。</div>
+    <div class="hero-card"><strong>听力抓手</strong>时间、方位、转折、最终决定。</div>
+    <div class="hero-card"><strong>临考目标</strong>把易错点压成条件反射。</div>
+  </div>
+
+  <div class="toc">
+    <a href="#particles">1. 助词固定搭配</a>
+    <a href="#verbs">2. 动词形态与句型</a>
+    <a href="#adjectives">3. 形容词变形</a>
+    <a href="#counters">4. 数量词与比较</a>
+    <a href="#communication">5. 疑问词与交际表达</a>
+    <a href="#patterns">6. 四大语法题型</a>
+    <a href="#sorting">7. 星号排序题</a>
+    <a href="#reading">8. 阅读线索</a>
+    <a href="#listening">9. 听力专项</a>
+    <a href="#expanded">10. 历史真题扩展</a>
+    <a href="#quiz">11. 临考自测</a>
+    <a href="#last">12. 最后 30 分钟</a>
+  </div>
+
+  <h2>0. 考前使用方法</h2>
+  <table>
+    <tr>
+      <th style="width: 22%;">复习阶段</th>
+      <th>怎么用</th>
+      <th style="width: 28%;">目标</th>
+    </tr>
+    <tr>
+      <td>考前 7 天</td>
+      <td>每天按模块背：助词 1 天、动词句型 1 天、形容词/数量词 1 天、阅读/听力 1 天，剩余时间刷错题。</td>
+      <td>把规则和真题句子绑定。</td>
+    </tr>
+    <tr>
+      <td>考前 2 天</td>
+      <td>只看表格里的“接续”“考点”“易错提醒”。不要再大段阅读。</td>
+      <td>快速查漏补缺。</td>
+    </tr>
+    <tr>
+      <td>进考场前</td>
+      <td>重点看红色易错点：で/に、を/が、もう/まだ、どちら/どれ、名词+中。</td>
+      <td>避免低级失分。</td>
+    </tr>
+  </table>
+
+  <h2 id="particles">1. 助词固定搭配速查</h2>
+  <h3>1.1 高频助词总表</h3>
+  <table>
+    <tr>
+      <th style="width: 12%;">助词</th>
+      <th style="width: 25%;">核心功能</th>
+      <th>固定搭配 / 例句</th>
+      <th style="width: 24%;">易错提醒</th>
+    </tr>
+    <tr>
+      <td class="formula">に</td>
+      <td>时间点、存在地点、移动目标、对象</td>
+      <td>四時<strong>に</strong>起きます。<br>机の上<strong>に</strong>本があります。<br>学校<strong>に</strong>行きます。<br>友達<strong>に</strong>会います。</td>
+      <td>强调“点”和“到达结果”。具体时间用 <strong>に</strong>，但「今日、明日、毎日」通常不用。</td>
+    </tr>
+    <tr>
+      <td class="formula">で</td>
+      <td>动作场所、方式手段、范围</td>
+      <td>レストラン<strong>で</strong>食べます。<br>バス<strong>で</strong>行きます。<br>カタカナ<strong>で</strong>お願いします。<br>一年<strong>で</strong>夏が一番好きです。</td>
+      <td>强调“动作发生的过程/方法”。不要和存在地点 <strong>に</strong> 混。</td>
+    </tr>
+    <tr>
+      <td class="formula">が</td>
+      <td>主语、能力/喜好/状态对象、自然现象</td>
+      <td>猫<strong>が</strong>好きです。<br>日本語<strong>が</strong>わかります。<br>花<strong>が</strong>咲きます。<br>いい香り<strong>が</strong>します。</td>
+      <td>中文像“宾语”的地方，日语常用 <strong>が</strong>：好き、わかる、ほしい。</td>
+    </tr>
+    <tr>
+      <td class="formula">を</td>
+      <td>他动词动作对象、经过/离开点</td>
+      <td>りんご<strong>を</strong>食べます。<br>テレビ<strong>を</strong>見ます。<br>公園<strong>を</strong>散歩します。</td>
+      <td>“主动对某物做动作”多用 <strong>を</strong>。喜欢/懂/想要不用 を。</td>
+    </tr>
+    <tr>
+      <td class="formula">と</td>
+      <td>并列、伴随、引用</td>
+      <td>本<strong>と</strong>鉛筆。<br>祖母<strong>と</strong>花を摘みました。<br>「さくら」<strong>と</strong>言います。</td>
+      <td>A と B と、どちらが...：二选一时两个选项后常对称加 と。</td>
+    </tr>
+    <tr>
+      <td class="formula">の</td>
+      <td>名词连接、所属、名词化、代词化</td>
+      <td>私<strong>の</strong>本。<br>英語<strong>の</strong>先生。<br>食べる<strong>の</strong>が楽しみです。<br>大きい<strong>の</strong>をください。</td>
+      <td>中文可省略“的”，日语两个名词连接时通常不能省略 の。</td>
+    </tr>
+    <tr>
+      <td class="formula">も</td>
+      <td>也、数量强调、全面否定</td>
+      <td>田中さん<strong>も</strong>行きます。<br>三時間<strong>も</strong>待ちました。<br>何<strong>も</strong>ありません。</td>
+      <td><span class="tag">も 会替换 は/が/を</span>：私はも ×，私も ○；りんごをも ×，りんごも ○。</td>
+    </tr>
+    <tr>
+      <td class="formula">は</td>
+      <td>主题、对比、强调否定</td>
+      <td>私は学生です。<br>あした、テスト<strong>は</strong>ありません。</td>
+      <td>否定时常用 は 强调“这个没有/这件事没有”。</td>
+    </tr>
+  </table>
+
+  <h3>1.2 で vs に：必考区分</h3>
+  <table>
+    <tr>
+      <th style="width: 18%;">对比</th>
+      <th>で</th>
+      <th>に</th>
+    </tr>
+    <tr>
+      <td>地点</td>
+      <td>动作发生地：学校<strong>で</strong>勉強します。</td>
+      <td>存在地点/到达点：学校<strong>に</strong>います。学校<strong>に</strong>行きます。</td>
+    </tr>
+    <tr>
+      <td>方式</td>
+      <td>交通/工具/语言：バス<strong>で</strong>、ペン<strong>で</strong>、カタカナ<strong>で</strong>。</td>
+      <td>通常不用来表示工具手段。</td>
+    </tr>
+    <tr>
+      <td>判断口诀</td>
+      <td>有动作过程，看 <strong>で</strong>。</td>
+      <td>有坐标、目标、时间点，看 <strong>に</strong>。</td>
+    </tr>
+  </table>
+
+  <h3>1.3 を vs が：中文思维最容易错</h3>
+  <table>
+    <tr>
+      <th style="width: 20%;">类型</th>
+      <th>用法</th>
+      <th>例句</th>
+    </tr>
+    <tr>
+      <td>他动词动作对象</td>
+      <td><strong>を</strong>：我对某物施加动作。</td>
+      <td>りんご<strong>を</strong>食べます。映画<strong>を</strong>見ます。</td>
+    </tr>
+    <tr>
+      <td>状态/能力/情感对象</td>
+      <td><strong>が</strong>：某物本身成为状态焦点。</td>
+      <td>猫<strong>が</strong>好きです。日本語<strong>が</strong>わかります。休み<strong>が</strong>ほしいです。</td>
+    </tr>
+  </table>
+
+  <h2 id="verbs">2. 动词形态与核心句型</h2>
+  <table>
+    <tr>
+      <th style="width: 24%;">句型</th>
+      <th style="width: 20%;">接续</th>
+      <th>意思 / 例句</th>
+      <th style="width: 25%;">考试提醒</th>
+    </tr>
+    <tr>
+      <td class="formula">Vて形 + います</td>
+      <td>電話して + います</td>
+      <td>正在做某事。<br>山下さんは今、電話しています。</td>
+      <td>后面已经有「中です」时，不能再填「電話している」。</td>
+    </tr>
+    <tr>
+      <td class="formula">动作性名词 + 中です</td>
+      <td>電話 + 中です</td>
+      <td>处于某动作中。<br>山下さんは今、電話中です。</td>
+      <td><span class="tag">中です 前面只能接名词</span>：電話中です ○，電話している中です ×。</td>
+    </tr>
+    <tr>
+      <td class="formula">Vた形 + り、Vた形 + りします</td>
+      <td>聞いた + り、読んだ + りします</td>
+      <td>列举动作：做做 A、做做 B。<br>音楽を聞いたり、本を読んだりしています。</td>
+      <td>前面有「たり」，后面通常也要找「たり」。句尾常有 します/しています。</td>
+    </tr>
+    <tr>
+      <td class="formula">Vて形 + から</td>
+      <td>掃除して + から</td>
+      <td>做完 A 之后再做 B。<br>玄関を掃除してから、台所を掃除します。</td>
+      <td>强调先后顺序，听力里要立刻给动作排序。</td>
+    </tr>
+    <tr>
+      <td class="formula">Vた形 + あとで</td>
+      <td>終わった + あとで</td>
+      <td>A 之后。<br>試験が終わったあとで、旅行に行きます。</td>
+      <td>和「てから」意思接近，但接续不同：た形 + あとで。</td>
+    </tr>
+    <tr>
+      <td class="formula">Vます去ます + ながら</td>
+      <td>見ます → 見ながら</td>
+      <td>一边 A 一边 B。<br>テレビを見ながら、ご飯を食べます。</td>
+      <td>不是て形。要从ます形去掉ます。</td>
+    </tr>
+    <tr>
+      <td class="formula">Vない形 + でください</td>
+      <td>忘れない + でください</td>
+      <td>请不要做某事。<br>帽子を忘れないでください。</td>
+      <td>听力请求/提醒题常考。</td>
+    </tr>
+  </table>
+
+  <h3>2.1 动作连接：休んで vs 休みで</h3>
+  <table>
+    <tr>
+      <th style="width: 22%;">表达</th>
+      <th>判断</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>少し休んで、何か飲みませんか。</td>
+      <td>正确</td>
+      <td>「休んで」是动词て形，表示“休息一下，然后喝点什么”。</td>
+    </tr>
+    <tr>
+      <td>少し休みで、何か飲みませんか。</td>
+      <td>错误</td>
+      <td>「休み」是名词，名词 + で不能连接“做完 A 再做 B”的动作流。</td>
+    </tr>
+  </table>
+
+  <h2 id="adjectives">3. 形容词变形</h2>
+  <table>
+    <tr>
+      <th style="width: 18%;">类型</th>
+      <th style="width: 22%;">规则</th>
+      <th>例子</th>
+      <th style="width: 24%;">提醒</th>
+    </tr>
+    <tr>
+      <td>一类形容词<br>い形容词</td>
+      <td>过去肯定：去 い + かったです</td>
+      <td>安い → 安かったです。<br>おいしい → おいしかったです。</td>
+      <td>词尾是 い，多数按这个规则。</td>
+    </tr>
+    <tr>
+      <td>一类形容词<br>い形容词</td>
+      <td>过去否定：去 い + くなかったです</td>
+      <td>安い → 安くない → 安くなかったです。<br>大きい → 大きくない → 大きくなかったです。</td>
+      <td>先变否定「くない」，再把ない变过去。</td>
+    </tr>
+    <tr>
+      <td>二类形容词<br>な形容词</td>
+      <td>过去肯定：词干 + でした</td>
+      <td>しずか → しずかでした。</td>
+      <td>词干后不加 かった。</td>
+    </tr>
+    <tr>
+      <td>二类形容词<br>な形容词</td>
+      <td>过去否定：词干 + じゃありませんでした</td>
+      <td>しずか → しずかじゃありませんでした。</td>
+      <td>N5 常见长选项，看到要能秒认。</td>
+    </tr>
+  </table>
+
+  <h2 id="counters">4. 数量词与比较句</h2>
+  <h3>4.1 通用量词「つ」</h3>
+  <table>
+    <tr>
+      <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th>
+    </tr>
+    <tr>
+      <td>ひとつ</td><td>ふたつ</td><td>みっつ</td><td>よっつ</td><td>いつつ</td><td>むっつ</td><td>ななつ</td><td>やっつ</td><td>ここのつ</td><td>とお</td>
+    </tr>
+  </table>
+  <div class="tip"><strong>高频陷阱：</strong>1-9 后面都有「つ」，10 是「とお」，没有「つ」。</div>
+
+  <h3>4.2 数量词位置</h3>
+  <table>
+    <tr>
+      <th style="width: 30%;">结构</th>
+      <th>例句</th>
+      <th style="width: 26%;">说明</th>
+    </tr>
+    <tr>
+      <td>物品 + が/を + 数量词 + 动词</td>
+      <td>りんごが三つあります。<br>えんぴつを四本買いました。</td>
+      <td>最常用，数量词放动词前。</td>
+    </tr>
+    <tr>
+      <td>数量词 + の + 物品 + が/を + 动词</td>
+      <td>三つのりんごがあります。<br>二匹の猫がいます。</td>
+      <td>数量词放名词前时，中间必须加 の。</td>
+    </tr>
+  </table>
+
+  <h3>4.3 动物量词</h3>
+  <table>
+    <tr>
+      <th style="width: 18%;">量词</th>
+      <th>对象</th>
+      <th>例子</th>
+    </tr>
+    <tr>
+      <td class="formula">匹（ひき）</td>
+      <td>猫、狗、鱼、青蛙、昆虫等小动物</td>
+      <td>二匹の猫</td>
+    </tr>
+    <tr>
+      <td class="formula">頭（とう）</td>
+      <td>大象、马、牛等大型动物</td>
+      <td>一頭の馬</td>
+    </tr>
+    <tr>
+      <td class="formula">羽（わ）</td>
+      <td>鸟类，也包括兔子</td>
+      <td>三羽の鳥</td>
+    </tr>
+  </table>
+
+  <h3>4.4 比较句「のほうが」</h3>
+  <table>
+    <tr>
+      <th style="width: 28%;">句型</th>
+      <th>例句</th>
+      <th style="width: 27%;">考点</th>
+    </tr>
+    <tr>
+      <td>A と B と、どちらが + 形容词 + ですか。</td>
+      <td>コーヒーと紅茶と、どちらが好きですか。</td>
+      <td>二选一用 どちら。选项后常对称加 と。</td>
+    </tr>
+    <tr>
+      <td>A のほうが + 形容词 + です。</td>
+      <td>先月のほうがおいしかったです。</td>
+      <td>被偏爱的那一方后面加 のほうが。</td>
+    </tr>
+  </table>
+
+  <h2 id="communication">5. 疑问词、指示词与交际表达</h2>
+  <table>
+    <tr>
+      <th style="width: 22%;">考点</th>
+      <th>用法</th>
+      <th>例句 / 判断</th>
+    </tr>
+    <tr>
+      <td>なにで</td>
+      <td>询问方式、交通工具、手段。</td>
+      <td>A：なにで学校へ行きますか。<br>B：バスです。</td>
+    </tr>
+    <tr>
+      <td>どちら vs どれ</td>
+      <td>二选一用 どちら；三选一及以上用 どれ。</td>
+      <td>コーヒーと紅茶 → どちら。<br>あめ、クッキー、チョコレート → どれ。</td>
+    </tr>
+    <tr>
+      <td>疑问词 + か</td>
+      <td>表示不确定的“某个/随便一点”。</td>
+      <td>何か飲みませんか。= 要不要喝点什么？</td>
+    </tr>
+    <tr>
+      <td>〜ませんか</td>
+      <td>委婉邀请，询问对方意愿。</td>
+      <td>コーヒーを飲みませんか。</td>
+    </tr>
+    <tr>
+      <td>〜ましょう</td>
+      <td>直接提议，一起做某事。</td>
+      <td>いっしょに食べましょう。</td>
+    </tr>
+    <tr>
+      <td>もう vs まだ</td>
+      <td>もう：已经；まだ：还没。</td>
+      <td>もう食べましたか。<br>はい、もう食べました。<br>いいえ、まだです / まだ食べていません。</td>
+    </tr>
+    <tr>
+      <td>名词 + で + お願いします</td>
+      <td>用某种方式/工具拜托对方。</td>
+      <td>カタカナでお願いします。</td>
+    </tr>
+  </table>
+
+  <h2 id="patterns">6. 四大语法题型：临考解题框架</h2>
+  <table>
+    <tr>
+      <th style="width: 20%;">题型阵营</th>
+      <th>核心判断</th>
+      <th>高频搭配</th>
+      <th style="width: 24%;">拿分动作</th>
+    </tr>
+    <tr>
+      <td>助词固定搭配</td>
+      <td>看空格前后词性。</td>
+      <td>名词 + の + 名词；数量词 + の + 名词；A や B など；大主语 は + 小主语 が + 形容词。</td>
+      <td>先判断词性，再选助词。</td>
+    </tr>
+    <tr>
+      <td>疑问与指示</td>
+      <td>看答句、选项数量、距离关系。</td>
+      <td>なにで；どちら/どれ；何か；こそあど。</td>
+      <td>不要只看半句，必须看前后对话。</td>
+    </tr>
+    <tr>
+      <td>动词形态</td>
+      <td>盯空格前后的词尾。</td>
+      <td>たり；た形 + あとで；て形 + から；名词 + 中。</td>
+      <td>先看接续，再看意思。</td>
+    </tr>
+    <tr>
+      <td>副词与交际</td>
+      <td>看语气和对话反应。</td>
+      <td>ときどき + 肯定；あまり + 否定；もう/まだ；お願いします。</td>
+      <td>用下一句倒推上一句。</td>
+    </tr>
+  </table>
+
+  <h2 id="sorting">7. 星号排序题四步法</h2>
+  <table>
+    <tr>
+      <th style="width: 18%;">步骤</th>
+      <th>做法</th>
+      <th>例子 / 口诀</th>
+    </tr>
+    <tr>
+      <td>1. 看句尾</td>
+      <td>先找谓语，判断前面必须接什么。</td>
+      <td>います 前面常接存在主体；食べました 前面找地点/对象。</td>
+    </tr>
+    <tr>
+      <td>2. 找小模块</td>
+      <td>把固定搭配先绑起来。</td>
+      <td>銀行の近くの；もらった帽子；小さくて色が明るい。</td>
+    </tr>
+    <tr>
+      <td>3. 堆修饰语</td>
+      <td>日语修饰语放在被修饰词前面。</td>
+      <td>去年誕生日に兄にもらった帽子。</td>
+    </tr>
+    <tr>
+      <td>4. 核对星号</td>
+      <td>排完整句后再看星号位置，不要手滑。</td>
+      <td>口诀：先看句尾定最后，再找助词绑小块，长长修饰堆前面，最后顺藤找星号。</td>
+    </tr>
+  </table>
+
+  <h2 id="reading">8. 阅读理解：时间、地点、方位线索</h2>
+  <h3>8.1 时间词</h3>
+  <table>
+    <tr>
+      <th style="width: 22%;">类别</th>
+      <th>重点词</th>
+      <th style="width: 28%;">提示</th>
+    </tr>
+    <tr>
+      <td>日期阶段</td>
+      <td>今日、昨日、明日、先週、来週、去年、夜</td>
+      <td>判断事情发生在哪一天。</td>
+    </tr>
+    <tr>
+      <td>频率习惯</td>
+      <td>毎日、いつも、ときどき、あまり</td>
+      <td>あまり 后面要接否定。</td>
+    </tr>
+    <tr>
+      <td>时间界限</td>
+      <td>〜から、〜まで、〜の前に、〜の後で、もう、まだ</td>
+      <td>判断先后顺序和完成状态。</td>
+    </tr>
+  </table>
+
+  <h3>8.2 地点与方位词</h3>
+  <table>
+    <tr>
+      <th style="width: 22%;">类别</th>
+      <th>重点词</th>
+      <th style="width: 28%;">提示</th>
+    </tr>
+    <tr>
+      <td>核心地点</td>
+      <td>家、店、スーパー、レストラン、学校、教室、駅、公園、山、海</td>
+      <td>圈出地点后面的 に/で/へ。</td>
+    </tr>
+    <tr>
+      <td>相对方位</td>
+      <td>近く、前、中、上、下、外、そば、向こう、真ん中</td>
+      <td>图表题和阅读定位题高频。</td>
+    </tr>
+  </table>
+  <div class="tip"><strong>阅读拿分动作：</strong>圈出时间词、地点词，再圈紧跟的助词。に 多提示时间点/存在地点/目标，で 多提示动作发生场所。</div>
+
+  <h2 id="listening">9. 听力专项：2013.07 N5 核心词汇与表达</h2>
+  <h3>9.1 听力高频词表</h3>
+  <table>
+    <tr>
+      <th style="width: 20%;">类别</th>
+      <th>词汇</th>
+      <th style="width: 28%;">听力功能</th>
+    </tr>
+    <tr>
+      <td>空间方位</td>
+      <td>駅、左側、右側、窓のそば、向こう、真ん中、一番上</td>
+      <td>图表辨析题、位置摆放题。</td>
+    </tr>
+    <tr>
+      <td>物品描述</td>
+      <td>厚い、薄い、黒い、白い、帽子、リボン、荷物</td>
+      <td>通过颜色、大小、厚薄排除选项。</td>
+    </tr>
+    <tr>
+      <td>时间频率</td>
+      <td>あしたの朝、来週の日曜日、毎週、昨日、〜分前、閉まる</td>
+      <td>时间陷阱题。8時5分前 = 7:55。</td>
+    </tr>
+    <tr>
+      <td>房屋建筑</td>
+      <td>玄関、台所、庭、お風呂、トイレ</td>
+      <td>家务分工、地点移动题。</td>
+    </tr>
+    <tr>
+      <td>关键动作</td>
+      <td>置きます、閉まります、登ります、掃除します、忘れます</td>
+      <td>听动作先后和任务对象。</td>
+    </tr>
+  </table>
+
+  <h3>9.2 听力核心语法</h3>
+  <table>
+    <tr>
+      <th style="width: 24%;">语法</th>
+      <th>例句</th>
+      <th style="width: 28%;">听到后要做什么</th>
+    </tr>
+    <tr>
+      <td>〜てから</td>
+      <td>玄関を掃除してから、台所を掃除します。</td>
+      <td>给动作排序：先玄关，后厨房。</td>
+    </tr>
+    <tr>
+      <td>〜にもらう / 〜がくれる</td>
+      <td>兄と姉にもらいました。父がくれました。</td>
+      <td>判断“谁给我”。もらう 是我收到，くれる 是别人给我。</td>
+    </tr>
+    <tr>
+      <td>〜のほうが</td>
+      <td>2番のほうが早いですよ。</td>
+      <td>后面常是最终选择。</td>
+    </tr>
+    <tr>
+      <td>〜ないでください</td>
+      <td>帽子を忘れないでください。</td>
+      <td>听成“不要忘记”，不是“忘记”。</td>
+    </tr>
+    <tr>
+      <td>もう / あまり</td>
+      <td>もう掃除をしました。あまり読みませんでした。</td>
+      <td>もう + 完成；あまり + 否定。</td>
+    </tr>
+  </table>
+
+  <h3>9.3 社交口语：问题 3/4 常考</h3>
+  <table>
+    <tr>
+      <th style="width: 28%;">表达</th>
+      <th>意思</th>
+      <th style="width: 28%;">场景</th>
+    </tr>
+    <tr>
+      <td>お休みなさい。</td>
+      <td>晚安。</td>
+      <td>睡前。</td>
+    </tr>
+    <tr>
+      <td>いらっしゃいませ。</td>
+      <td>欢迎光临。</td>
+      <td>店员对客人。</td>
+    </tr>
+    <tr>
+      <td>ここ、いいですか。</td>
+      <td>这里可以吗？</td>
+      <td>想坐在旁边空位。</td>
+    </tr>
+    <tr>
+      <td>これ、いかがですか。</td>
+      <td>这个怎么样？要不要来点？</td>
+      <td>推荐、送东西、请别人吃。</td>
+    </tr>
+    <tr>
+      <td>見せてください。</td>
+      <td>请给我看一下。</td>
+      <td>购物时让店员拿商品。</td>
+    </tr>
+    <tr>
+      <td>〜てもいいですか。</td>
+      <td>可以做某事吗？</td>
+      <td>征求许可。</td>
+    </tr>
+  </table>
+
+  <h3>9.4 听力题型拆解：先判断它在考什么</h3>
+  <table>
+    <tr>
+      <th style="width: 20%;">题型</th>
+      <th>常见问法</th>
+      <th>听的时候抓什么</th>
+      <th style="width: 26%;">避坑点</th>
+    </tr>
+    <tr>
+      <td>任务选择题</td>
+      <td>何をしますか。何を買いますか。</td>
+      <td>动作动词、对象名词、最后决定。</td>
+      <td>前面提到的不一定是答案，注意 じゃ、でも、やっぱり。</td>
+    </tr>
+    <tr>
+      <td>人物判断题</td>
+      <td>だれですか。だれが行きますか。</td>
+      <td>人物名 + 助词：が、は、に、から。</td>
+      <td>もらう/くれる 会改变视角。</td>
+    </tr>
+    <tr>
+      <td>时间判断题</td>
+      <td>いつですか。何時ですか。</td>
+      <td>今日、明日、来週、午前/午後、〜分前。</td>
+      <td>8時5分前 = 7:55，不是 8:05。</td>
+    </tr>
+    <tr>
+      <td>地点路线题</td>
+      <td>どこですか。どこへ行きますか。</td>
+      <td>駅、店、学校、前、右、左、そば、向こう。</td>
+      <td>に/へ 是目标，で 是动作地点。</td>
+    </tr>
+    <tr>
+      <td>图表匹配题</td>
+      <td>どれですか。</td>
+      <td>颜色、大小、形状、位置、数量。</td>
+      <td>先排除明显不符，再等最终修正。</td>
+    </tr>
+    <tr>
+      <td>即时应答题</td>
+      <td>何と言いますか。</td>
+      <td>场景身份：店员/客人、老师/学生、家人/朋友。</td>
+      <td>不要直译中文，要选日语场景里自然的回应。</td>
+    </tr>
+  </table>
+
+  <h3>9.5 听前 5 秒：先看选项，做标记</h3>
+  <table>
+    <tr>
+      <th style="width: 24%;">选项长什么样</th>
+      <th>说明</th>
+      <th style="width: 32%;">听前标记</th>
+    </tr>
+    <tr>
+      <td>都是时间</td>
+      <td>题目大概率问“什么时候”。</td>
+      <td>圈上午/下午、星期、数字、前/后。</td>
+    </tr>
+    <tr>
+      <td>都是地点</td>
+      <td>题目大概率问“在哪里/去哪里”。</td>
+      <td>圈方位词：前、右、左、中、そば、向こう。</td>
+    </tr>
+    <tr>
+      <td>都是物品</td>
+      <td>题目大概率问“买/拿/找哪个”。</td>
+      <td>圈颜色、大小、数量、厚薄、新旧。</td>
+    </tr>
+    <tr>
+      <td>都是人物</td>
+      <td>题目大概率问“谁做/谁给/给谁”。</td>
+      <td>圈人名，听助词：が、に、から。</td>
+    </tr>
+    <tr>
+      <td>都是动作</td>
+      <td>题目大概率问“接下来做什么”。</td>
+      <td>圈动词，重点等 じゃ、では、お願いします 后面的动作。</td>
+    </tr>
+  </table>
+  <div class="tip"><strong>听力原则：</strong>选项先决定“我要听什么”。不要一上来试图听懂每个词，先抓题目需要的那一类信息。</div>
+
+  <h3>9.6 数字、时间、价格：听力高危区</h3>
+  <table>
+    <tr>
+      <th style="width: 20%;">类别</th>
+      <th>必听表达</th>
+      <th style="width: 34%;">提醒</th>
+    </tr>
+    <tr>
+      <td>时间点</td>
+      <td>1時、4時、7時、9時；午前、午後；朝、昼、夜</td>
+      <td>4時（よじ）、7時（しちじ）、9時（くじ）读音要熟。</td>
+    </tr>
+    <tr>
+      <td>提前/差几分</td>
+      <td>〜分前</td>
+      <td>8時5分前 = 差 5 分到 8 点 = 7:55。</td>
+    </tr>
+    <tr>
+      <td>期间</td>
+      <td>〜から〜まで、二時間、三日間</td>
+      <td>から/まで 决定开始和结束。</td>
+    </tr>
+    <tr>
+      <td>价格</td>
+      <td>百円、三百円、六百円、八百円、千円</td>
+      <td>三百=さんびゃく，六百=ろっぴゃく，八百=はっぴゃく。</td>
+    </tr>
+    <tr>
+      <td>数量</td>
+      <td>一つ、二つ、三つ；一本、二本、三本；一枚、二枚</td>
+      <td>听清量词，物品类别可能直接决定答案。</td>
+    </tr>
+  </table>
+
+  <h3>9.7 场景词库：听到词就定位场景</h3>
+  <table>
+    <tr>
+      <th style="width: 18%;">场景</th>
+      <th>高频词</th>
+      <th style="width: 30%;">常考问题</th>
+    </tr>
+    <tr>
+      <td>学校</td>
+      <td>先生、学生、教室、宿題、試験、勉強、休み</td>
+      <td>在哪里上课、什么时候交作业、谁去办公室。</td>
+    </tr>
+    <tr>
+      <td>商店</td>
+      <td>店、スーパー、いくら、安い、高い、ください、見せてください</td>
+      <td>买哪个、多少钱、要几个。</td>
+    </tr>
+    <tr>
+      <td>车站/交通</td>
+      <td>駅、バス、電車、タクシー、何番、早い、遅い</td>
+      <td>坐什么、几号、几点出发/到达。</td>
+    </tr>
+    <tr>
+      <td>家里</td>
+      <td>玄関、台所、部屋、掃除、洗濯、ご飯、電話</td>
+      <td>谁做家务、先做什么、东西放哪里。</td>
+    </tr>
+    <tr>
+      <td>餐厅</td>
+      <td>レストラン、喫茶店、コーヒー、紅茶、ケーキ、おいしい</td>
+      <td>点什么、和谁吃、哪个更好。</td>
+    </tr>
+    <tr>
+      <td>医院/身体</td>
+      <td>病院、医者、薬、頭、歯、痛い、熱</td>
+      <td>哪里不舒服、接下来做什么。</td>
+    </tr>
+  </table>
+
+  <h3>9.8 位置路线：方位词组合</h3>
+  <table>
+    <tr>
+      <th style="width: 22%;">表达</th>
+      <th>意思</th>
+      <th style="width: 34%;">例句</th>
+    </tr>
+    <tr>
+      <td>〜の前</td>
+      <td>……前面</td>
+      <td>駅の前にあります。</td>
+    </tr>
+    <tr>
+      <td>〜の右 / 左</td>
+      <td>……右边/左边</td>
+      <td>銀行の右です。</td>
+    </tr>
+    <tr>
+      <td>〜の上 / 下</td>
+      <td>……上面/下面</td>
+      <td>机の上にあります。</td>
+    </tr>
+    <tr>
+      <td>〜の中 / 外</td>
+      <td>……里面/外面</td>
+      <td>かばんの中にあります。</td>
+    </tr>
+    <tr>
+      <td>〜のそば / 近く</td>
+      <td>……旁边/附近</td>
+      <td>窓のそばです。駅の近くです。</td>
+    </tr>
+    <tr>
+      <td>〜の向こう</td>
+      <td>……对面/那边</td>
+      <td>スーパーの向こうです。</td>
+    </tr>
+  </table>
+  <div class="danger"><strong>图表题提醒：</strong>听到「いいえ、右ではありません。左です。」这类修正时，答案以后面的修正为准。</div>
+
+  <h3>9.9 听力最后决定词：答案常在后半句</h3>
+  <table>
+    <tr>
+      <th style="width: 18%;">表达</th>
+      <th>作用</th>
+      <th style="width: 36%;">例子</th>
+    </tr>
+    <tr>
+      <td>じゃ / では</td>
+      <td>决定行动</td>
+      <td>じゃ、これをください。= 最终买这个。</td>
+    </tr>
+    <tr>
+      <td>でも</td>
+      <td>转折</td>
+      <td>でも、高いですね。= 前面的选择可能被否定。</td>
+    </tr>
+    <tr>
+      <td>やっぱり</td>
+      <td>改变后确认</td>
+      <td>やっぱり、二番にします。= 最终选二号。</td>
+    </tr>
+    <tr>
+      <td>そうですね</td>
+      <td>思考/同意</td>
+      <td>そうですね。じゃ、明日にしましょう。</td>
+    </tr>
+    <tr>
+      <td>お願いします</td>
+      <td>请求落定</td>
+      <td>カタカナでお願いします。= 用片假名。</td>
+    </tr>
+  </table>
+
+  <h3>9.10 听力训练方法：三遍法</h3>
+  <table>
+    <tr>
+      <th style="width: 18%;">遍数</th>
+      <th>任务</th>
+      <th style="width: 34%;">不要做什么</th>
+    </tr>
+    <tr>
+      <td>第一遍</td>
+      <td>只抓答案信息：人、时间、地点、物品、动作。</td>
+      <td>不要暂停，不要纠结没听懂的小词。</td>
+    </tr>
+    <tr>
+      <td>第二遍</td>
+      <td>对照原文，圈出没听出来的词和助词。</td>
+      <td>不要只看中文翻译。</td>
+    </tr>
+    <tr>
+      <td>第三遍</td>
+      <td>跟读原文，尤其是数字、て形、ないでください、方位词。</td>
+      <td>不要默读，听力要让耳朵熟悉声音。</td>
+    </tr>
+  </table>
+
+  <h3>9.11 问题 1：看图任务题的“最后落点”</h3>
+  <table>
+    <tr>
+      <th style="width: 18%;">真题场景</th>
+      <th>关键听法</th>
+      <th style="width: 32%;">答案锁定句</th>
+    </tr>
+    <tr>
+      <td>集合地点</td>
+      <td>先听女生提出的错误假设，再等老师用 いいえ 修正。</td>
+      <td>いいえ、駅に来てください。= 不是学校，是车站。</td>
+    </tr>
+    <tr>
+      <td>放椅子</td>
+      <td>位置题要把“基准物 + 方位”连起来听。</td>
+      <td>机の左側、窓のそば = 桌子左边、窗户旁。</td>
+    </tr>
+    <tr>
+      <td>拿书</td>
+      <td>颜色、厚薄连续排除，听 いいえ 后面的真实属性。</td>
+      <td>白い本、薄い本 = 白色薄书。</td>
+    </tr>
+    <tr>
+      <td>问路</td>
+      <td>先顺路线，再听确认句里的左右。</td>
+      <td>この道をまっすぐ、その向こう、この道の右側。</td>
+    </tr>
+    <tr>
+      <td>买花</td>
+      <td>数量题注意“追加”。リボン 等包装信息可能只是干扰。</td>
+      <td>二本 + もう一本 = 三本；リボンは要りません。</td>
+    </tr>
+    <tr>
+      <td>打扫准备</td>
+      <td>分清“别人带什么”和“自己要带什么”。</td>
+      <td>お茶はわたしが持っていきますから、カップを持ってきてください。</td>
+    </tr>
+    <tr>
+      <td>等巴士</td>
+      <td>先排除不去的车，再等比较句决定最终选择。</td>
+      <td>2番のほうが早いですよ。じゃ、少し待ちます。</td>
+    </tr>
+  </table>
+  <div class="mini"><strong>问题 1 做题顺序：</strong>看图先圈差异：地点、左右、颜色、数量、交通编号。录音中凡是出现 いいえ、もう、じゃ、のほうが，立刻回到选项重新排除。</div>
+
+  <h3>9.12 问题 2：带着题目关键词听长对话</h3>
+  <table>
+    <tr>
+      <th style="width: 18%;">题目问什么</th>
+      <th>常见陷阱</th>
+      <th style="width: 36%;">考场反应</th>
+    </tr>
+    <tr>
+      <td>谁送的</td>
+      <td>先提到的物品不一定是题目问的物品。</td>
+      <td>题目问 帽子，就只等 この帽子。父がくれました = 父亲给的。</td>
+    </tr>
+    <tr>
+      <td>星期几</td>
+      <td>多个星期连发，其他老师和没有课都是排除项。</td>
+      <td>わたしは月曜日に教えます = 山田老师星期一上课。</td>
+    </tr>
+    <tr>
+      <td>打扫哪里</td>
+      <td>お願い 的任务可能被 もう 覆盖。</td>
+      <td>トイレはもう掃除をしたよ。じゃ、庭の掃除 = 院子。</td>
+    </tr>
+    <tr>
+      <td>几楼</td>
+      <td>餐厅、浴室、房间会配不同楼层。</td>
+      <td>レストラン=1/2階；お風呂=10階；部屋=8階。</td>
+    </tr>
+    <tr>
+      <td>昨天做什么</td>
+      <td>毎週 是习惯，不等于昨日。</td>
+      <td>昨日は家で本を読みました。行きませんでした 要排除。</td>
+    </tr>
+    <tr>
+      <td>几点见面</td>
+      <td>初始时间会因闭店、迟到、改约而作废。</td>
+      <td>8時5分前 = 7:55。听到 でも 后重算。</td>
+    </tr>
+  </table>
+  <div class="danger"><strong>问题 2 高危误选：</strong>题目问“昨天”，不要选“每周”；题目问“帽子”，不要选“毛衣”；题目问“学生房间”，不要选“餐厅/浴室”。</div>
+
+  <h3>9.13 问题 3：看图社交句，抓「想做什么」</h3>
+  <table>
+    <tr>
+      <th style="width: 22%;">旁白关键词</th>
+      <th>应该选的自然表达</th>
+      <th style="width: 32%;">不要选什么</th>
+    </tr>
+    <tr>
+      <td>今から寝ます</td>
+      <td>お休みなさい。</td>
+      <td>こんばんは 是见面寒暄；さようなら 是分别。</td>
+    </tr>
+    <tr>
+      <td>時間が知りたいです</td>
+      <td>今何時ですか。</td>
+      <td>いくらですか 问价格；どのぐらい 问程度/时长。</td>
+    </tr>
+    <tr>
+      <td>座りたいです</td>
+      <td>ここ、いいですか。</td>
+      <td>不要用过去否定式 座りませんでしたか。</td>
+    </tr>
+    <tr>
+      <td>お菓子をあげたいです</td>
+      <td>これ、いかがですか。</td>
+      <td>どうしてですか 是问原因。</td>
+    </tr>
+    <tr>
+      <td>カメラを見たいです</td>
+      <td>このカメラを見せてください。</td>
+      <td>見せたいです 是“我想给别人看”，视角错。</td>
+    </tr>
+  </table>
+  <div class="tip"><strong>问题 3 秒解法：</strong>旁白里的「〜たいです」告诉你“我想做什么”。答案通常不是直译，而是对对方说的请求、寒暄或许可表达。</div>
+
+  <h3>9.14 问题 4：即时应答靠疑问词反射</h3>
+  <table>
+    <tr>
+      <th style="width: 18%;">听到</th>
+      <th>立刻找</th>
+      <th style="width: 34%;">真题式正确回应</th>
+    </tr>
+    <tr>
+      <td>何で</td>
+      <td>交通工具、手段</td>
+      <td>自転車で来ます。電車で行きます。</td>
+    </tr>
+    <tr>
+      <td>誰の</td>
+      <td>所属者</td>
+      <td>わたしのです。田中さんのです。</td>
+    </tr>
+    <tr>
+      <td>いくつ</td>
+      <td>数量</td>
+      <td>三つです。五つ並べます。</td>
+    </tr>
+    <tr>
+      <td>だれ</td>
+      <td>人物身份</td>
+      <td>わたしの妹です。山田先生です。</td>
+    </tr>
+    <tr>
+      <td>どこかへ行きますか</td>
+      <td>具体去处或活动</td>
+      <td>山に登ります。友達の家へ行きます。</td>
+    </tr>
+    <tr>
+      <td>ましたか / 子供のとき</td>
+      <td>过去式回答</td>
+      <td>あまり読みませんでした。よく行きました。</td>
+    </tr>
+  </table>
+  <div class="mini"><strong>问题 4 检查尾巴：</strong>题干是过去时，选项也要优先找 ました / ませんでした。题干问交通、数量、所属、人物时，不要被选项里重复的词带走，要回答疑问词本身。</div>
+
+  <h3>9.15 逐题错因压缩清单</h3>
+  <table>
+    <tr>
+      <th style="width: 22%;">错因</th>
+      <th>表现</th>
+      <th style="width: 34%;">修正动作</th>
+    </tr>
+    <tr>
+      <td>听到第一个信息就选</td>
+      <td>8:20、3号巴士、厕所、黑色书这类前置信息容易诱导。</td>
+      <td>等 いいえ / でも / じゃ / もう / のほうが 后面的落点。</td>
+    </tr>
+    <tr>
+      <td>没有绑定题目关键词</td>
+      <td>问帽子却记毛衣，问房间却记餐厅。</td>
+      <td>听前在选项旁写：物品、人、时间、地点、动作。</td>
+    </tr>
+    <tr>
+      <td>数字没做换算</td>
+      <td>〜分前、もう一本、1時間ぐらい 后修改时间。</td>
+      <td>听到数字立即写算式：2+1=3；8:00-5分=7:55。</td>
+    </tr>
+    <tr>
+      <td>助词视角混乱</td>
+      <td>先生に会う、電車に乗る、父がくれる、兄にもらう。</td>
+      <td>に=对象/乘坐/目标；が=动作主语；を=动作对象。</td>
+    </tr>
+    <tr>
+      <td>把中文直译成日语</td>
+      <td>想看商品时误选 見たいです 或 見せたいです。</td>
+      <td>对店员请求用 見せてください；想坐下用 ここ、いいですか。</td>
+    </tr>
+  </table>
+
+  <h2 id="expanded">10. 历史真题扩展：高频补充模块</h2>
+  <div class="mini">
+    这一部分按历年 N5 真题常见出题方式补充：题目通常不直接问“语法名”，而是通过空格前后的词性、答句、场景和选项差异来考。
+  </div>
+
+  <h3>10.1 存在句：あります / います</h3>
+  <table>
+    <tr>
+      <th style="width: 26%;">句型</th>
+      <th>意思</th>
+      <th style="width: 32%;">真题式例句</th>
+    </tr>
+    <tr>
+      <td>场所 + に + 物 + が + あります</td>
+      <td>某地有某物。</td>
+      <td>机の上に本があります。</td>
+    </tr>
+    <tr>
+      <td>场所 + に + 人/动物 + が + います</td>
+      <td>某地有人或动物。</td>
+      <td>庭に犬がいます。</td>
+    </tr>
+    <tr>
+      <td>物/人 + は + 场所 + に + あります/います</td>
+      <td>某物/某人在某地。</td>
+      <td>トイレはあちらにあります。田中さんは教室にいます。</td>
+    </tr>
+  </table>
+  <div class="danger"><strong>易错：</strong>非生命物用 あります，人和动物用 います。考试里看到句尾是 います，前面通常要找人或动物。</div>
+
+  <h3>10.2 授受动词：もらう / くれる / あげる</h3>
+  <table>
+    <tr>
+      <th style="width: 18%;">动词</th>
+      <th style="width: 25%;">视角</th>
+      <th>助词搭配</th>
+      <th style="width: 30%;">例句</th>
+    </tr>
+    <tr>
+      <td class="formula">もらう</td>
+      <td>我/我方收到</td>
+      <td>A に B をもらいます</td>
+      <td>兄に帽子をもらいました。</td>
+    </tr>
+    <tr>
+      <td class="formula">くれる</td>
+      <td>别人给我/我方</td>
+      <td>A が B をくれます</td>
+      <td>父が時計をくれました。</td>
+    </tr>
+    <tr>
+      <td class="formula">あげる</td>
+      <td>我/别人给别人</td>
+      <td>A に B をあげます</td>
+      <td>友達に花をあげました。</td>
+    </tr>
+  </table>
+  <div class="tip"><strong>听力判断：</strong>もらいました 要问“从谁那里收到”；くれました 要问“谁给了我”。</div>
+
+  <h3>10.3 愿望、邀请、许可、禁止</h3>
+  <table>
+    <tr>
+      <th style="width: 24%;">句型</th>
+      <th style="width: 22%;">意思</th>
+      <th>例句</th>
+      <th style="width: 24%;">考点</th>
+    </tr>
+    <tr>
+      <td>名词 + が + ほしいです</td>
+      <td>想要某物</td>
+      <td>新しいかばんがほしいです。</td>
+      <td>ほしい 前面用 が。</td>
+    </tr>
+    <tr>
+      <td>Vます去ます + たいです</td>
+      <td>想做某事</td>
+      <td>日本へ行きたいです。</td>
+      <td>行きます → 行きたい。</td>
+    </tr>
+    <tr>
+      <td>Vて形 + ください</td>
+      <td>请做某事</td>
+      <td>名前を書いてください。</td>
+      <td>请求/指令题常考。</td>
+    </tr>
+    <tr>
+      <td>Vない形 + でください</td>
+      <td>请不要做某事</td>
+      <td>ここで写真を撮らないでください。</td>
+      <td>否定请求，不要漏掉 ない。</td>
+    </tr>
+    <tr>
+      <td>Vて形 + もいいですか</td>
+      <td>可以做某事吗</td>
+      <td>ここに座ってもいいですか。</td>
+      <td>征求许可。</td>
+    </tr>
+  </table>
+
+  <h3>10.4 频率副词：肯定/否定搭配</h3>
+  <table>
+    <tr>
+      <th style="width: 20%;">副词</th>
+      <th>意思</th>
+      <th style="width: 32%;">后面常接</th>
+    </tr>
+    <tr>
+      <td>いつも</td>
+      <td>总是</td>
+      <td>肯定：いつも行きます。</td>
+    </tr>
+    <tr>
+      <td>よく</td>
+      <td>经常</td>
+      <td>肯定：よく本を読みます。</td>
+    </tr>
+    <tr>
+      <td>ときどき</td>
+      <td>有时</td>
+      <td>肯定：ときどき映画を見ます。</td>
+    </tr>
+    <tr>
+      <td>あまり</td>
+      <td>不太</td>
+      <td><span class="tag">否定</span>：あまり読みません。</td>
+    </tr>
+    <tr>
+      <td>ぜんぜん</td>
+      <td>完全不</td>
+      <td><span class="tag">否定</span>：ぜんぜんわかりません。</td>
+    </tr>
+  </table>
+
+  <h3>10.5 动词变形入口表</h3>
+  <table>
+    <tr>
+      <th style="width: 18%;">目标形</th>
+      <th style="width: 28%;">常见用途</th>
+      <th>例子</th>
+      <th style="width: 24%;">快速记忆</th>
+    </tr>
+    <tr>
+      <td>ます形</td>
+      <td>礼貌表达、接 たい、ながら</td>
+      <td>読みます → 読みたい / 読みながら</td>
+      <td>去ます后接。</td>
+    </tr>
+    <tr>
+      <td>て形</td>
+      <td>连接、请求、许可、正在</td>
+      <td>読んで、読んでください、読んでもいい、読んでいます</td>
+      <td>N5 使用频率最高。</td>
+    </tr>
+    <tr>
+      <td>た形</td>
+      <td>过去简体、たり、あとで</td>
+      <td>読んだ、読んだり、読んだあとで</td>
+      <td>形态常和て形相近。</td>
+    </tr>
+    <tr>
+      <td>ない形</td>
+      <td>否定、禁止请求</td>
+      <td>読まない、読まないでください</td>
+      <td>看到 でください 前有ない，就是“请不要”。</td>
+    </tr>
+  </table>
+
+  <h3>10.6 历史真题常见“陷阱信号词”</h3>
+  <table>
+    <tr>
+      <th style="width: 18%;">信号词</th>
+      <th>常见作用</th>
+      <th style="width: 34%;">做题反应</th>
+    </tr>
+    <tr>
+      <td>でも</td>
+      <td>转折</td>
+      <td>前面可能是铺垫，后面更重要。</td>
+    </tr>
+    <tr>
+      <td>じゃ / では</td>
+      <td>得出决定</td>
+      <td>后面常是最终行动或答案。</td>
+    </tr>
+    <tr>
+      <td>いいえ</td>
+      <td>否定前句</td>
+      <td>不要被前一个选项带走。</td>
+    </tr>
+    <tr>
+      <td>やっぱり</td>
+      <td>改变后确认</td>
+      <td>后面通常是最终选择。</td>
+    </tr>
+    <tr>
+      <td>〜のほうが</td>
+      <td>比较后偏向</td>
+      <td>标记被选择的一方。</td>
+    </tr>
+  </table>
+
+  <h2 id="quiz">11. 临考自测：真题式迷你题</h2>
+  <table>
+    <tr>
+      <th style="width: 8%;">题号</th>
+      <th>题目</th>
+      <th style="width: 22%;">答案</th>
+      <th style="width: 34%;">理由</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>机の上（　）本があります。</td>
+      <td>に</td>
+      <td>存在地点用 に。</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>日本語（　）わかります。</td>
+      <td>が</td>
+      <td>能力/理解对象用 が。</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>バス（　）学校へ行きます。</td>
+      <td>で</td>
+      <td>交通工具/手段用 で。</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>コーヒーと紅茶と、（　）が好きですか。</td>
+      <td>どちら</td>
+      <td>二选一用 どちら。</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>休みの日は音楽を聞いたり、本を（　）しています。</td>
+      <td>読んだり</td>
+      <td>たり 前后呼应，读む → 読んだり。</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>山下さんは今、電話（　）です。</td>
+      <td>中</td>
+      <td>动作性名词 + 中です。</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>試験が終わった（　）、旅行に行きます。</td>
+      <td>あとで</td>
+      <td>た形 + あとで。</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>テレビを見（　）、ご飯を食べます。</td>
+      <td>ながら</td>
+      <td>ます形去ます + ながら。</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>A：もう昼ご飯を食べましたか。B：いいえ、（　）です。</td>
+      <td>まだ</td>
+      <td>未完成状态用 まだ。</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>カタカナ（　）お願いします。</td>
+      <td>で</td>
+      <td>方式/方法用 で。</td>
+    </tr>
+  </table>
+
+  <h2 id="last">12. 最后 30 分钟背诵清单</h2>
+  <table>
+    <tr>
+      <th style="width: 24%;">必须秒反应</th>
+      <th>内容</th>
+    </tr>
+    <tr>
+      <td>助词</td>
+      <td>に=点/目标/存在；で=动作场所/手段；が=喜好能力状态；を=他动词对象；の=名词连接；も=替换は/が/を。</td>
+    </tr>
+    <tr>
+      <td>动词接续</td>
+      <td>ている=正在；名词+中=正在；たり=列举；てから=之后；た形+あとで=之后；ます去ます+ながら=一边一边。</td>
+    </tr>
+    <tr>
+      <td>问答逻辑</td>
+      <td>なにで问交通工具；どちら二选一；どれ三选一以上；何か=某些东西；もう问完成，まだ答未完成。</td>
+    </tr>
+    <tr>
+      <td>阅读听力</td>
+      <td>圈时间、地点、方位、助词；听到 いいえ、でも、じゃ、のほうが，后面常改变答案或给最终答案。</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
