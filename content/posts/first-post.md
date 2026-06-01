@@ -3,6 +3,11 @@ title: "第一篇文章：用 Hugo 发布博客"
 date: 2026-06-01T10:45:00+08:00
 draft: false
 tags: ["Hugo", "Cloudflare Pages", "GitHub"]
+coverEyebrow: "Static Blog"
+coverTitle: "Hugo + GitHub + Cloudflare Pages"
+coverSubtitle: "5 分钟写作，自动构建，快速上线"
+coverStart: "#0b1324"
+coverEnd: "#2f5f73"
 ---
 
 这是这个静态博客的第一篇文章。

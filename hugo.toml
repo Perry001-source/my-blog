@@ -17,3 +17,33 @@ description = '一个使用 GitHub、Hugo 和 Cloudflare Pages 发布的静态�
     name = '文章'
     pageRef = '/posts'
     weight = 20
+
+  [[menus.main]]
+    name = '课程'
+    url = '#'
+    weight = 30
+
+  [[menus.main]]
+    name = '工具箱'
+    url = '#'
+    weight = 40
+
+  [[menus.main]]
+    name = '案例'
+    url = '#'
+    weight = 50
+
+  [[menus.main]]
+    name = '资源'
+    url = '#'
+    weight = 60
+
+  [[menus.main]]
+    name = '社区'
+    url = '#'
+    weight = 70
+
+  [[menus.main]]
+    name = '关于'
+    url = '#'
+    weight = 80

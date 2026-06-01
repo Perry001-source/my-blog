@@ -1,6 +1,8 @@
 footer {
   color: #667085;
   font-size: 0.9rem;
-  margin-top: 24px;
+  margin: 0 auto;
+  max-width: 1580px;
+  padding: 0 28px 28px;
   text-align: center;
 }

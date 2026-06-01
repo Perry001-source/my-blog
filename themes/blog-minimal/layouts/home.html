@@ -1,9 +1,32 @@
 {{ define "main" }}
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <section>
-      <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-      {{ .Summary }}
-    </section>
+  {{ $pages := where site.RegularPages "Section" "posts" }}
+  {{ with index $pages 0 }}
+    <article class="featured-card">
+      <a class="cover cover--featured" href="{{ .RelPermalink }}" style="--cover-start: {{ default "#111827" .Params.coverStart }}; --cover-end: {{ default "#334155" .Params.coverEnd }};">
+        <span class="cover__eyebrow">{{ default "Featured" .Params.coverEyebrow }}</span>
+        <span class="cover__title">{{ default .Title .Params.coverTitle }}</span>
+        <span class="cover__subtitle">{{ default site.Params.description .Params.coverSubtitle }}</span>
+      </a>
+      <div class="featured-card__body">
+        <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+      </div>
+    </article>
   {{ end }}
+
+  <div class="post-grid">
+    {{ range after 1 $pages }}
+      <article class="post-card">
+        <a class="cover" href="{{ .RelPermalink }}" style="--cover-start: {{ default "#172554" .Params.coverStart }}; --cover-end: {{ default "#0f766e" .Params.coverEnd }};">
+          <span class="cover__eyebrow">{{ default "Article" .Params.coverEyebrow }}</span>
+          <span class="cover__title">{{ default .Title .Params.coverTitle }}</span>
+          <span class="cover__subtitle">{{ default "" .Params.coverSubtitle }}</span>
+        </a>
+        <div class="post-card__body">
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+        </div>
+      </article>
+    {{ end }}
+  </div>
 {{ end }}
